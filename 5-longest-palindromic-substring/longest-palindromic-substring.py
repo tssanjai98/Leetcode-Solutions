@@ -1,23 +1,27 @@
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        if not s or len(s) == 1:
-            return s
-        
-        start, end = 0, 0
-
-        def expand_from_center(left: int, right: int) -> tuple:
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                left -= 1
-                right += 1
-            return left + 1, right - 1
-
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        res = ""
+        resLen = 0
         for i in range(len(s)):
-            l1, r1 = expand_from_center(i, i)
-            if r1 - l1 > end - start:
-                start, end = l1, r1
+            l, r = i,i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -=1
+                r+=1
 
-            l2, r2 = expand_from_center(i, i + 1)
-            if r2 - l2 > end - start:
-                start, end = l2, r2
+            l,r = i, i+1
+            while l>=0 and r < len(s) and s[l] == s[r]:
+                if (r-l+1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -=1
+                r +=1
+        return res
 
-        return s[start:end + 1]
+        
