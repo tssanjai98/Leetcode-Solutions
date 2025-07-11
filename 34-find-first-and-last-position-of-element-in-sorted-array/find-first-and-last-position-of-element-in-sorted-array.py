@@ -11,7 +11,7 @@ class Solution:
             left+=1
         
         while right >= 0:
-            if len(nums) >0 and nums[right] == target:
+            if len(nums) > 0 and nums[right] == target:
                 last = right
                 break
             right -= 1
