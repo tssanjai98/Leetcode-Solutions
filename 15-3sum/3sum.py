@@ -22,4 +22,3 @@ class Solution:
                     j+=1
 
         return [list(i) for i in res]
-            
