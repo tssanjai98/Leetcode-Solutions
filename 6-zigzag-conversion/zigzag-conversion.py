@@ -1,5 +1,5 @@
-class Solution(object):
-    def convert(self, s, numRows):
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
         """
         :type s: str
         :type numRows: int
