@@ -1,33 +1,38 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
-        fresh = 0
-        time = 0
+        visited = set()
         q = collections.deque()
-
+        mins = 0
+        fresh = 0
 
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == 1:
+                if (grid[r][c] == 2 and (r,c) not in visited):
+                    q.append((r,c))
+                    visited.add((r,c))
+                if (grid[r][c] == 1):
                     fresh += 1
-                if grid[r][c] == 2:
-                    q.append([r,c])
-        
-        directions = [[1,0], [-1,0], [0,1], [0,-1]]
-        while q and fresh > 0:
-            for i in range(len(q)):
-                r,c = q.popleft()
-                for dr, dc in directions:
-                    row, col = r+dr, c+dc
-                    if (row < 0 or
-                        row == rows or
-                        col < 0 or
-                        col == cols or
-                        grid[row][col] != 1):
-                        continue
-                    grid[row][col] = 2
-                    q.append([row,col])
-                    fresh -= 1
-            time += 1
+        if fresh == 0:
+            return 0
 
-        return time if fresh == 0 else -1
+        while q:
+            for i in range(len(q)):
+                row, col = q.popleft()
+                directions = [[1,0],[-1,0],[0,1],[0,-1]]
+                for dr, dc in directions:
+                    nr, nc = row+dr, col+dc
+                    if (nr<0 or
+                        nc<0 or
+                        nr == rows or
+                        nc == cols or
+                        grid[nr][nc] == 0 or
+                        grid[nr][nc] == 2 or
+                        (nr,nc) in visited):
+                        continue
+                    q.append((nr,nc))
+                    visited.add((nr,nc))
+                    fresh-=1
+            mins+=1
+
+        return mins - 1  if fresh == 0 else -1
