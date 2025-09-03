@@ -13,8 +13,8 @@ class Solution:
                     visited.add((r,c))
                 if (grid[r][c] == 1):
                     fresh += 1
-        if fresh == 0:
-            return 0
+        # if fresh == 0:
+        #     return 0
 
         while q:
             for i in range(len(q)):
@@ -35,4 +35,4 @@ class Solution:
                     fresh-=1
             mins+=1
 
-        return mins - 1  if fresh == 0 else -1
+        return max(0,mins - 1)  if fresh == 0 else -1
