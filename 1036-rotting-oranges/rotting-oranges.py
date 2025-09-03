@@ -13,8 +13,9 @@ class Solution:
                     visited.add((r,c))
                 if (grid[r][c] == 1):
                     fresh += 1
-        # if fresh == 0:
-        #     return 0
+        
+        if fresh == 0:
+            return 0
 
         while q:
             for i in range(len(q)):
