@@ -14,7 +14,12 @@ class Solution:
                 r,c = q.pop()
                 for dr,dc in directions:
                     row, col = r+dr, c+dc
-                    if (row >= 0 and col >= 0 and row < rows and col < cols and grid[row][col] == '1' and (row,col) not in visited):
+                    if (row >= 0 and 
+                        col >= 0 and 
+                        row < rows and 
+                        col < cols and 
+                        grid[row][col] == '1' and 
+                        (row,col) not in visited):
                         visited.add((row,col))
                         q.append((row,col))
 
