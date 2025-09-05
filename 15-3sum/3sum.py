@@ -3,19 +3,19 @@ class Solution:
         res = []
         nums.sort()
 
-        for i, n in enumerate(nums):
-            if i > 0 and n == nums[i-1]:
+        for i, a in enumerate(nums):
+            if i > 0 and nums[i-1] == a:
                 continue
-
-            l,r = i+1, len(nums)-1
+            
+            l, r = i+1, len(nums)-1
             while l<r:
-                ts = n + nums[l] + nums[r]
-                if ts > 0:
-                    r-=1
-                elif ts < 0:
-                    l+=1
+                tSum = nums[i] + nums[l] + nums[r]
+                if tSum > 0:
+                    r -=1
+                elif tSum < 0:
+                    l +=1
                 else:
-                    res.append([n, nums[l], nums[r]])
+                    res.append([nums[i], nums[l], nums[r]])
                     l+=1
                     while nums[l] == nums[l-1] and l<r:
                         l+=1
