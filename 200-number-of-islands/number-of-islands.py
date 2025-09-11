@@ -2,8 +2,8 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         rows, cols = len(grid), len(grid[0])
         visited = set()
-        islands = 0
-
+        numIslands = 0
+        
         def dfs(r, c):
             if (r < 0 or
                 c < 0 or
@@ -22,5 +22,8 @@ class Solution:
             for c in range(cols):
                 if grid[r][c] == '1' and (r,c) not in visited:
                     dfs(r,c)
-                    islands +=1
-        return islands
+                    numIslands +=1
+
+        return numIslands
+
+        
