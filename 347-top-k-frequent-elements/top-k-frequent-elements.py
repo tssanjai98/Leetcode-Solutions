@@ -10,9 +10,8 @@ class Solution:
             freq[cnt].append(num)
 
         res = []
-
         for i in range(len(freq)-1,0,-1):
-            for n in freq[i]:
-                res.append(n)
+            for num in freq[i]:
+                res.append(num)
                 if len(res) == k:
                     return res
