@@ -3,6 +3,7 @@ class Solution:
         res = 0
         hashSet = set()
         l = 0
+
         for r in range(len(s)):
             while s[r] in hashSet:
                 hashSet.remove(s[l])
