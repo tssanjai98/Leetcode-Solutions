@@ -5,8 +5,7 @@ class Solution:
         for i in range(len(nums)):
             diff = target - nums[i]
             if diff in hashMap:
-                return [i, hashMap[diff]]
-
+                return [hashMap[diff], i]
             hashMap[nums[i]] = i
 
-        return [-1, -1]
+        return [-1,-1]
