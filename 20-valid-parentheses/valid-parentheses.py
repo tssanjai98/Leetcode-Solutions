@@ -1,15 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        hashMap = {
-            ")":"(",
-            "}":"{",
-            "]":"["
+        cTO = {
+            "}": "{",
+            ")": "(",
+            "]": "["
         }
 
         for c in s:
-            if c in hashMap:
-                if stack and stack[-1] == hashMap[c]:
+            if c in cTO:
+                if stack and stack[-1] == cTO[c]:
                     stack.pop()
                 else:
                     return False
