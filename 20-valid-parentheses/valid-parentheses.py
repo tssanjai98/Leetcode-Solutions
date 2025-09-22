@@ -1,15 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        cTO = {
+
+        closeToOpen = {
             "}": "{",
             ")": "(",
-            "]": "["
+            "]": "[",
         }
 
         for c in s:
-            if c in cTO:
-                if stack and stack[-1] == cTO[c]:
+            if c in closeToOpen:
+                if stack and stack[-1] == closeToOpen[c]:
                     stack.pop()
                 else:
                     return False
